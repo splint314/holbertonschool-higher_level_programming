@@ -1,32 +1,37 @@
 #!/usr/bin/env python3
 
-"""Module to convert XML data to JSON format."""
-import json
+"""Module for XML serialization and deserialization."""
+
 import xml.etree.ElementTree as ET
 
 
-def convert_xml_to_json(xml_file):
-    """
-    Reads an XML file and converts its content into a JSON file.
-
-    Args:
-        xml_file (str): The name of the source XML file.
-    """
+def serialize_to_xml(dictionary, filename):
+    """Serialize a dictionary to an XML file."""
     try:
-        tree = ET.parse(xml_file)
+        root = ET.Element("data")
+
+        for key, value in dictionary.items():
+            child = ET.SubElement(root, key)
+            child.text = str(value)
+
+        tree = ET.ElementTree(root)
+        tree.write(filename, encoding="utf-8", xml_declaration=True)
+
+    except Exception:
+        return None
+
+
+def deserialize_from_xml(filename):
+    """Deserialize an XML file to a dictionary."""
+    try:
+        tree = ET.parse(filename)
         root = tree.getroot()
 
-        data = []
+        data = {}
         for child in root:
-            item = {elem.tag: elem.text for elem in child}
-            data.append(item)
+            data[child.tag] = child.text
 
-        with open("data.json", mode='w', encoding='utf-8') as f:
-            json.dump(data, f, indent=4)
+        return data
 
-    except FileNotFoundError:
-        print(f"Error: The file {xml_file} was not found.")
-    except ET.ParseError:
-        print(f"Error: The file {xml_file} is not a valid XML file.")
-    except Exception as e:
-        print(f"An unexpected error occurred: {e}")
+    except Exception:
+        return None
