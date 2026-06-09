@@ -17,10 +17,10 @@ if __name__ == "__main__":
         db=argv[3]
     )
     cur = db.cursor()
-    query = "SELECT * FROM states WHERE name LIKE BINARY 'N%' ORDER BY id ASC"
-    cur.execute(query)
+    cur.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC")
     rows = cur.fetchall()
     for row in rows:
-        print(row)
+        if row[1][0] == 'N':
+            print(row)
     cur.close()
     db.close()
