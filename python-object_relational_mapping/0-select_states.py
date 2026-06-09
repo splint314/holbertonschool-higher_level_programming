@@ -1,12 +1,11 @@
 #!/usr/bin/python3
-
 """
-This script lists all states from the database hbtn_0e_0_usa.
-It takes 3 arguments: mysql username, mysql password and database name.
+This script connects to a MySQL database and lists all states.
+It requires three arguments: username, password, and database name.
 """
-
 import MySQLdb
 from sys import argv
+
 
 if __name__ == "__main__":
     db = MySQLdb.connect(
