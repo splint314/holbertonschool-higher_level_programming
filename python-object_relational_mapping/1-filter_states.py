@@ -1,26 +1,32 @@
 #!/usr/bin/python3
 """
-This script connects to a MySQL database and lists all states with a name
-starting with 'N' (upper N).
-It requires three arguments: username, password, and database name.
+Module that lists all states with names starting with N from hbtn_0e_0_usa
 """
 import MySQLdb
-from sys import argv
-
+import sys
 
 if __name__ == "__main__":
-    db = MySQLdb.connect(
+    username = sys.argv[1]
+    password = sys.argv[2]
+    database = sys.argv[3]
+
+    conn = MySQLdb.connect(
         host="localhost",
         port=3306,
-        user=argv[1],
-        passwd=argv[2],
-        db=argv[3]
+        user=username,
+        passwd=password,
+        db=database,
+        charset="utf8"
     )
-    cur = db.cursor()
+
+    cur = conn.cursor()
+
     cur.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC")
-    rows = cur.fetchall()
-    for row in rows:
-        if row[1] and row[1][0] == 'N':
-            print(row)
+
+    query_rows = cur.fetchall()
+
+    for row in query_rows:
+        print(row)
+
     cur.close()
-    db.close()
+    conn.close()
