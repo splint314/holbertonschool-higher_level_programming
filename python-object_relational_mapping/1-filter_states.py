@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
 This script connects to a MySQL database and lists all states with a name
-starting with 'N'.
+starting with 'N' (upper N).
 It requires three arguments: username, password, and database name.
 """
 import MySQLdb
@@ -17,11 +17,8 @@ if __name__ == "__main__":
         db=argv[3]
     )
     cur = db.cursor()
-    cur.execute(
-        "SELECT * FROM states "
-        "WHERE name LIKE BINARY 'N%' "
-        "ORDER BY id ASC"
-    )
+    query = "SELECT * FROM states WHERE name LIKE BINARY 'N%' ORDER BY id ASC"
+    cur.execute(query)
     rows = cur.fetchall()
     for row in rows:
         print(row)
