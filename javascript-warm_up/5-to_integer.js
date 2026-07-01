@@ -5,5 +5,5 @@ const arg = process.argv[2];
 if (arg === undefined) {
   console.log('Not a number');
 } else {
-  console.log(parseInt(arg));
+  console.log('My number: ' + parseInt(arg));
 }
