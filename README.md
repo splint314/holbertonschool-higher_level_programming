@@ -26,16 +26,7 @@ This repository covers the "higher level" part of the curriculum: talking to a M
 
 ## 🧠 Cheat Sheet
 
-- **ORM (SQLAlchemy)** — mapping Python classes to database tables so you query with objects instead of raw SQL strings. Like using a translator at a foreign meeting: you speak Python, it speaks SQL to the database for you.
-- **Raw SQL (MySQLdb)** — sending SQL statements directly to the database driver. The equivalent of ordering in the restaurant's native language instead of through a translator: more control, more room for typos.
-- **Session (SQLAlchemy)** — a workspace that tracks pending changes before committing them to the database. Like a shopping cart: you add and remove items freely, and nothing is charged until checkout (`commit()`).
-- **Serialization (JSON/Pickle/XML)** — converting an in-memory object into a format that can be saved or sent elsewhere. Like vacuum-sealing a meal: the food (data) is compacted into a shippable package, then reconstituted later.
-- **CSV parsing (`csv.DictReader`)** — reading tabular text as rows of key-value pairs. A spreadsheet where each row already knows its own column headers.
-- **REST API** — a set of URL endpoints that respond to HTTP verbs (GET, POST) with structured data. Like a restaurant menu: fixed items (endpoints) you order (request) and receive a plate (response) for.
-- **HTTP status codes** — a numeric shorthand for what happened to a request. Traffic lights for computers: 200 means go, 404 means the road doesn't exist, 401 means you weren't let past the gate.
-- **Basic Auth vs JWT** — Basic Auth checks a username/password on every request; JWT issues a signed token once that proves identity afterward. Basic Auth is showing your ID at every door, a JWT is a wristband from the entrance that gets you into every room after.
-- **DOM manipulation (`querySelector`, `classList`)** — finding and modifying elements of a live web page from JavaScript. Like a stage manager who can walk on set and rearrange props while the show is running.
-- **`fetch` / Promises** — making an asynchronous network request and reacting once the response arrives, without freezing the page. Ordering food and continuing your conversation instead of standing frozen at the counter until it's ready.
+All the key concepts from this repo, explained with analogies → **[CHEATSHEET.md](CHEATSHEET.md)**
 
 ## 📬 Contact
 
